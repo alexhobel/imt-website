@@ -4,129 +4,64 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    --background: #ffffff;           /* Weiß */
+    --foreground: #0a0a0a;           /* Fast schwarz */
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+    --card: #ffffff;                 /* Weiß */
+    --card-foreground: #0a0a0a;      /* Fast schwarz */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
+    --popover: #ffffff;              /* Weiß */
+    --popover-foreground: #0a0a0a;   /* Fast schwarz */
 
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
+    --primary: #df0029;              /* Primärfarbe */
+    --primary-foreground: #ffffff;   /* Weiß für Text auf Primärfarbe */
 
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
+    --secondary: #0f1112;            /* Sekundärfarbe */
+    --secondary-foreground: #ffffff; /* Weiß für Text auf Sekundärfarbe */
 
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
+    --muted: #f5f5f5;                /* Sehr helles Grau */
+    --muted-foreground: #737373;     /* Mittelgrau für Text */
 
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
+    --accent: #f5f5f5;               /* Sehr helles Grau */
+    --accent-foreground: #0a0a0a;    /* Fast schwarz für Text auf Akzentfarbe */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: #c83232;          /* Rotton für destruktive Aktionen */
+    --destructive-foreground: #ffffff; /* Weiß für Text auf destruktiver Farbe */
 
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
+    --border: #e6e6e6;               /* Hellgrau */
+    --input: #e6e6e6;                /* Hellgrau für Inputs */
+    --ring: #0a0a0a;                 /* Fast schwarz für Ringe */
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
+    --background: #0a0a0a;           /* Fast schwarz */
+    --foreground: #ffffff;           
 
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
+    --card: #0a0a0a;                 
+    --card-foreground: #ffffff;      
 
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
+    --popover: #0a0a0a;              
+    --popover-foreground: #ffffff;   
 
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
+    --primary: #df0029;              
+    --primary-foreground: #ffffff;   
 
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: #0f1112;            
+    --secondary-foreground: #ffffff; 
 
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
+    --muted: #262626;                
+    --muted-foreground: #a3a3a3;     
 
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
+    --accent: #262626;               
+    --accent-foreground: #ffffff;    
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: #a01e1e;          
+    --destructive-foreground: #ffffff; 
 
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
-@layer prose-m-none {
-  * {
-    @apply prose-headings:m-0;
-  }
-}
-
-@layer utilities {
-
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Hide scrollbar for IE, Edge and Firefox */
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    /* IE and Edge */
-    scrollbar-width: none;
-    /* Firefox */
-  }
-}
-
-.fade-in {
-  -webkit-animation: fade-in 500ms cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
-  animation: fade-in 500ms cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
-}
-
-@-webkit-keyframes fade-in {
-  0% {
-    -webkit-filter: blur(12px);
-    filter: blur(12px);
-    opacity: 0;
-  }
-
-  100% {
-    -webkit-filter: blur(0px);
-    filter: blur(0px);
-    opacity: 1;
-  }
-}
-
-@keyframes fade-in {
-  0% {
-    -webkit-filter: blur(12px);
-    filter: blur(12px);
-    opacity: 0;
-  }
-
-  100% {
-    -webkit-filter: blur(0px);
-    filter: blur(0px);
-    opacity: 1;
+    --border: #262626;               
+    --input: #262626;                
+    --ring: #d2d2d2;                 
   }
 }
