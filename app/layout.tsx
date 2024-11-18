@@ -6,15 +6,14 @@ import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
 import { Button } from "@/components/ui/button";
-import { MobileNav } from "@/components/nav/mobile-nav";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Main } from "@/components/craft";
 import { mainMenu, contentMenu } from "@/menu.config";
 import { Section, Container } from "@/components/craft";
+import {Header} from '@/components/nav/header'
 import Balancer from "react-wrap-balancer";
 
 import Logo from "@/public/imt-logo.svg";
-import HamburgerMenuIcon from '@/public/icons/burger-menu-icon.svg'
 
 import Image from "next/image";
 import Link from "next/link";
@@ -53,7 +52,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Nav />
+          <Header />
           <Main>{children}</Main>
           <Footer />
         </ThemeProvider>
@@ -63,45 +62,7 @@ export default function RootLayout({
   );
 }
 
-//className zum hinzufügen von CSS Klassen - falls die Navigation in bestimmten Situationen anders gestylt werden soll
-//Children fügt zusätzliche Inhalte der Komponente hinzu (neue punkte im header)
-//id fgt das html attribut dem header zu für das Styling
-const Nav = ({ className, children, id }: NavProps) => {
-  return (
-    <nav
-      className={cn(
-        "sticky z-50 top-0 bg-background",
-        "fade-in",
-        className,
-      )}
-      id={id}
-    >
-      <div
-        id="nav-container"
-        className="max-w-5xl mx-auto py-9 px-6 sm:px-8 flex justify-between items-center" 
-      >
-        <Link className="hover:opacity-75 transition-all flex gap-2 items-center" href="/" >
-        <Image
-            src={Logo}
-            alt="Logo"
-            layout="fixed"
-            height={180} // Anpassung der Höhe
-            width={180} // Anpassung der Breite, wenn nötig
-            className="dark:invert"
-          />
-        </Link>
-        {children}
-        <div className="flex items-center gap-2">
-        <div className="hidden md:flex flex items-center gap-4">
-            <Button variant="default" size="lg" rounded="rounded-full">Kontaktieren Sie uns</Button>
-            <Button variant="menu" size="default" rounded="rounded-full"> <Image src={HamburgerMenuIcon} alt="Menu" /> Menü</Button>
-        </div>
-      <MobileNav />
-        </div>
-      </div>
-    </nav>
-  );
-};
+
 
 const Footer = () => {
   return (
