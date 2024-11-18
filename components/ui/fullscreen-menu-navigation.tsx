@@ -2,23 +2,25 @@
 
 import * as React from "react";
 import { Dialog, DialogContent, DialogTrigger, DialogClose } from "@radix-ui/react-dialog";
-import { Button } from "@/components/ui/button"; // Für den Trigger-Button
-import Image from "next/image"; // Für das Logo
-import { cn } from "@/lib/utils"; // Für Klassenhandling
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { X } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-// Importiere das Logo und ein Schließen-Icon
 import Logo from "@/public/imt-logo.svg";
-import { X } from "lucide-react"; // Für das Schließen-Icon
 
-export function FullscreenMenu() {
+const FullscreenMenuNavigationTrigger = DialogTrigger;
+
+export function FullscreenMenuNavigation() {
   return (
     <Dialog>
-      {/* Trigger für das Menü */}
-      <DialogTrigger asChild>
-        <Button variant="ghost" className="flex items-center gap-2">
+      {/* Trigger-Element */}
+      <FullscreenMenuNavigationTrigger asChild>
+        <Button variant="ghost" size="default" rounded="rounded-full" className="flex items-center gap-2">
+          <X className="w-6 h-6" />
           Menü
         </Button>
-      </DialogTrigger>
+      </FullscreenMenuNavigationTrigger>
 
       {/* Menüinhalt */}
       <DialogContent className="fixed inset-0 bg-red-600 text-white flex flex-col">
@@ -62,3 +64,5 @@ export function FullscreenMenu() {
     </Dialog>
   );
 }
+
+export { FullscreenMenuNavigationTrigger };

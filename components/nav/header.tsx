@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
-import { FullscreenMenu } from "@/components/ui/fullscreen-menu";
+import { FullscreenMenuNavigation, FullscreenMenuNavigationTrigger } from "@/components/ui/fullscreen-menu-navigation";
 
 import Logo from "@/public/imt-logo.svg";
 import { mainMenu } from "@/menu.config";
@@ -45,17 +45,14 @@ export function Header() {
           <Button variant="default" size="lg" rounded="rounded-full">
             Kontaktieren Sie uns
           </Button>
-          <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="default" rounded="rounded-full" className="flex items-center gap-2">
-                <Menu />
-                Menü
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="bg-red-600 text-white pr-0">
-              <MenuContent onClose={() => setOpen(false)} />
-            </SheetContent>
-          </Sheet>
+          <FullscreenMenuNavigation>
+            <FullscreenMenuNavigationTrigger>
+                <Button variant="ghost" size="default" rounded="rounded-full" className="flex items-center gap-2">
+                  <Menu />
+                  Menü
+                </Button>
+            </FullscreenMenuNavigationTrigger>
+          </FullscreenMenuNavigation>
         </div>
 
         {/* Mobile Menu Button */}
