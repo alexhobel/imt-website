@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
+import { FullscreenMenu } from "@/components/ui/fullscreen-menu";
 
 import Logo from "@/public/imt-logo.svg";
 import { mainMenu } from "@/menu.config";
