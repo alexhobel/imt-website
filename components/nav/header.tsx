@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
-import { FullscreenMenuNavigation, FullscreenMenuNavigationTrigger } from "@/components/ui/fullscreen-menu-navigation";
+import { FullScreenNavigationMenu, FullScreenNavigationMenuTrigger } from "@/components/ui/fullscreen-menu-navigation";
 
 import Logo from "@/public/imt-logo.svg";
 import { mainMenu } from "@/menu.config";
@@ -24,11 +24,9 @@ export function Header() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <header className={cn("sticky z-50 top-0 bg-background fade-in")}>
-      <div
-        className="max-w-5xl mx-auto py-9 px-6 sm:px-8 flex justify-between items-center"
-      >
-        {/* Logo */}
+    <header className={cn("z-50 top-0 bg-background fade-in")}>
+      <div className="w-full mx-auto py-9 px-8 sm:px-8 flex justify-between items-center">
+        {/* Logo links */}
         <Link className="hover:opacity-75 transition-all flex gap-2 items-center" href="/">
           <Image
             src={Logo}
@@ -40,40 +38,45 @@ export function Header() {
           />
         </Link>
 
-        {/* Desktop Buttons */}
-        <div className="hidden md:flex items-center gap-4">
-          <Button variant="default" size="lg" rounded="rounded-full">
-            Kontaktieren Sie uns
-          </Button>
-          <FullscreenMenuNavigation>
-            <FullscreenMenuNavigationTrigger>
-                <Button variant="ghost" size="default" rounded="rounded-full" className="flex items-center gap-2">
-                  <Menu />
-                  Menü
-                </Button>
-            </FullscreenMenuNavigationTrigger>
-          </FullscreenMenuNavigation>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <Sheet open={open} onOpenChange={setOpen}>
-          <SheetTrigger asChild>
-            <Button
-              variant="ghost"
-              className="px-0 border w-10 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
-            >
-              <Menu />
-              <span className="sr-only">Toggle Menu</span>
+        {/* Buttons rechts */}
+        <div className="flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-4">
+            <Button variant="default" size="lg" rounded="rounded-full">
+              Kontaktieren Sie uns
             </Button>
-          </SheetTrigger>
-          <SheetContent side="left" className="bg-red-600 text-white pr-0">
-            <MenuContent onClose={() => setOpen(false)} />
-          </SheetContent>
-        </Sheet>
+          </div>
+
+          {/* FullScreenNavigationMenu */}
+          <FullScreenNavigationMenu>
+            <FullScreenNavigationMenuTrigger asChild>
+              <Button variant="ghost" size="default" rounded="rounded-full" className="hidden md:flex items-center gap-2">
+                <Menu />
+                Menü
+              </Button>
+            </FullScreenNavigationMenuTrigger>
+          </FullScreenNavigationMenu>
+
+          {/* Mobile Menu Button */}
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger asChild>
+              <Button
+                variant="ghost"
+                className="px-0 border w-10 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+              >
+                <Menu />
+                <span className="sr-only">Toggle Menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="bg-red-600 text-white pr-0">
+              <MenuContent onClose={() => setOpen(false)} />
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   );
 }
+
 
 // Separate component for the menu content to reuse
 function MenuContent({ onClose }: { onClose: () => void }) {

@@ -1,39 +1,33 @@
 "use client";
 
 import * as React from "react";
-import { Dialog, DialogContent, DialogTrigger, DialogClose } from "@radix-ui/react-dialog";
+import * as Dialog from "@radix-ui/react-dialog";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { X } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 import Logo from "@/public/imt-logo.svg";
 
-const FullscreenMenuNavigationTrigger = DialogTrigger;
+const FullScreenNavigationMenuRoot = Dialog.Root;
+const FullScreenNavigationMenuTrigger = Dialog.Trigger;
+const FullScreenNavigationMenuContent = Dialog.Content;
+const FullScreenNavigationMenuClose = Dialog.Close;
 
-export function FullscreenMenuNavigation() {
+export function FullScreenNavigationMenu({ children }: { children: React.ReactNode }) {
   return (
-    <Dialog>
-      {/* Trigger-Element */}
-      <FullscreenMenuNavigationTrigger asChild>
-        <Button variant="ghost" size="default" rounded="rounded-full" className="flex items-center gap-2">
-          <X className="w-6 h-6" />
-          Menü
-        </Button>
-      </FullscreenMenuNavigationTrigger>
-
-      {/* Menüinhalt */}
-      <DialogContent className="fixed inset-0 bg-red-600 text-white flex flex-col">
+    <FullScreenNavigationMenuRoot>
+      {children} {/* Hier wird der Trigger von außen übergeben */}
+      <FullScreenNavigationMenuContent className="fixed inset-0 bg-red-600 text-white flex flex-col">
         <div className="flex justify-between items-center p-6">
           {/* Logo */}
           <Image src={Logo} alt="Logo" width={120} height={60} className="dark:invert" />
 
           {/* Schließen-Button */}
-          <DialogClose asChild>
+          <FullScreenNavigationMenuClose asChild>
             <Button variant="ghost" size="icon" className="text-white">
               <X className="w-6 h-6" />
             </Button>
-          </DialogClose>
+          </FullScreenNavigationMenuClose>
         </div>
 
         {/* Menüinhalt */}
@@ -60,9 +54,9 @@ export function FullscreenMenuNavigation() {
             <span>LI</span>
           </div>
         </footer>
-      </DialogContent>
-    </Dialog>
+      </FullScreenNavigationMenuContent>
+    </FullScreenNavigationMenuRoot>
   );
 }
 
-export { FullscreenMenuNavigationTrigger };
+export { FullScreenNavigationMenuTrigger };
