@@ -7,35 +7,56 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 // Utility Imports
-import { Menu, ArrowRightSquare } from "lucide-react";
+import { Menu, ArrowRightSquare, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { cva, VariantProps } from "class-variance-authority";
 
 // Component Imports
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
-import { FullScreenNavigationMenu, FullScreenNavigationMenuTrigger } from "@/components/ui/fullscreen-menu-navigation";
+import { FullScreenNavigationMenu, FullScreenNavigationMenuTrigger, FullScreenNavigationMenuClose } from "@/components/ui/fullscreen-menu-navigation";
+import { Container } from '@/components/craft'
 
 import Logo from "@/public/imt-logo.svg";
+import LogoWhite from "@/public/imt-logo-white.svg";
 import { mainMenu } from "@/menu.config";
 
-export function Header() {
+
+const headerVariants = cva("z-50 top-0 fade-in", {
+  variants: {
+    variant: {
+      default: "bg-background",
+      fullscreen_navigation_menu: "bg-red-600 text-white",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
+
+interface HeaderProps extends VariantProps<typeof headerVariants> {
+  onClose?: () => void;
+}
+
+export function Header( { variant = "default", onClose }: HeaderProps ) {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <header className={cn("z-50 top-0 bg-background fade-in")}>
-      <div className="w-full mx-auto py-9 px-8 sm:px-8 flex justify-between items-center">
+    <header className={cn("z-50 top-0 bg-background")}>
+      <Container>
+      <div className="flex justify-between items-center py-10">
         {/* Logo links */}
         <Link className="hover:opacity-75 transition-all flex gap-2 items-center" href="/">
-          <Image
-            src={Logo}
-            alt="Logo"
-            layout="fixed"
-            height={180}
-            width={180}
-            className="dark:invert"
-          />
+        <Image
+              src={variant === "fullscreen_navigation_menu" ? LogoWhite : Logo}
+              alt="Logo"
+              layout="fixed"
+              height={60}
+              width={120}
+              className={variant === "menu" ? "" : "dark:invert"}
+            />
         </Link>
 
         {/* Buttons rechts */}
@@ -45,16 +66,32 @@ export function Header() {
               Kontaktieren Sie uns
             </Button>
           </div>
+          
+          {variant === "default" && (
+            <FullScreenNavigationMenu>
+              <FullScreenNavigationMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="default"
+                  rounded="rounded-full"
+                  className="hidden md:flex items-center gap-2"
+                >
+                  <Menu />
+                  Menü
+                </Button>
+              </FullScreenNavigationMenuTrigger>
+            </FullScreenNavigationMenu>
+          )}
 
-          {/* FullScreenNavigationMenu */}
-          <FullScreenNavigationMenu>
-            <FullScreenNavigationMenuTrigger asChild>
-              <Button variant="ghost" size="default" rounded="rounded-full" className="hidden md:flex items-center gap-2">
-                <Menu />
-                Menü
+          {variant === "fullscreen_navigation_menu" && (
+            <FullScreenNavigationMenuClose asChild>
+            <Button variant="outline" size="default" className="text-white flex items-center gap-2" rounded="rounded-full">
+                <X className="w-6 h-6 text-black" />
+                <span className="text-black">Close</span>
               </Button>
-            </FullScreenNavigationMenuTrigger>
-          </FullScreenNavigationMenu>
+            </FullScreenNavigationMenuClose>
+          )}
+
 
           {/* Mobile Menu Button */}
           <Sheet open={open} onOpenChange={setOpen}>
@@ -73,6 +110,7 @@ export function Header() {
           </Sheet>
         </div>
       </div>
+      </Container>
     </header>
   );
 }

@@ -1,8 +1,25 @@
 // Define the menu items
 export const mainMenu = {
-  home: "/",
-  digitalEngineering: "https://github.com/9d8dev/next-wp",
-  blog: "/posts",
+  home:{
+    href: "/",
+    displayText: "Home"
+  }, 
+  digitalEngineering:{
+    href: "/",
+    displayText: "Digitales Engineering"
+  }, 
+  digitalTwin:{
+    href: "/",
+    displayText: "Digitaler Zwilling"
+  }, 
+  company:{
+    href: "/",
+    displayText: "Unternehmen"
+  },
+  career:{
+    href: "/",
+    displayText: "Karriere"
+  }
 };
 
 export const contentMenu = {

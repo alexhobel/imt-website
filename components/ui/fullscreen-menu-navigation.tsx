@@ -5,8 +5,11 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { X } from "lucide-react";
-
-import Logo from "@/public/imt-logo.svg";
+import { mainMenu } from "@/menu.config";
+import Link from "next/link";
+import Logo from "@/public/imt-logo-white.svg";
+import { Container } from '@/components/craft'
+import { Header } from '@/components/nav/header'
 
 const FullScreenNavigationMenuRoot = Dialog.Root;
 const FullScreenNavigationMenuTrigger = Dialog.Trigger;
@@ -18,27 +21,24 @@ export function FullScreenNavigationMenu({ children }: { children: React.ReactNo
     <FullScreenNavigationMenuRoot>
       {children} {/* Hier wird der Trigger von außen übergeben */}
       <FullScreenNavigationMenuContent className="fixed inset-0 bg-red-600 text-white flex flex-col">
-        <div className="flex justify-between items-center p-6">
-          {/* Logo */}
-          <Image src={Logo} alt="Logo" width={120} height={60} className="dark:invert" />
 
-          {/* Schließen-Button */}
-          <FullScreenNavigationMenuClose asChild>
-            <Button variant="ghost" size="icon" className="text-white">
-              <X className="w-6 h-6" />
-            </Button>
-          </FullScreenNavigationMenuClose>
-        </div>
+      <Header variant="fullscreen_navigation_menu" onClose={() => FullScreenNavigationMenuRoot.close()} />
+      {/* Menüinhalt */}
+      <div className="flex-grow flex flex-col justify-center items-start px-8">
+        <ul className="space-y-4 text-2xl">
+          {Object.entries(mainMenu).map(([key, { href, displayText }]) => (
+            <li key={key}>
+              <Link
+                href={href}
+                className="hover:opacity-80 transition-opacity"
+              >
+                {displayText}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-        {/* Menüinhalt */}
-        <div className="flex-grow flex flex-col justify-center items-start px-8">
-          <h1 className="text-4xl font-bold mb-4">Digitales Engineering</h1>
-          <ul className="space-y-4 text-2xl">
-            <li className="hover:opacity-80 transition-opacity">Digitaler Zwilling</li>
-            <li className="hover:opacity-80 transition-opacity">Unternehmen</li>
-            <li className="hover:opacity-80 transition-opacity">Karriere</li>
-          </ul>
-        </div>
 
         {/* Footer */}
         <footer className="flex justify-between items-center px-8 py-6 border-t border-white">
@@ -59,4 +59,4 @@ export function FullScreenNavigationMenu({ children }: { children: React.ReactNo
   );
 }
 
-export { FullScreenNavigationMenuTrigger };
+export { FullScreenNavigationMenuTrigger, FullScreenNavigationMenuClose };
