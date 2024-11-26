@@ -43,8 +43,15 @@ interface HeaderProps extends VariantProps<typeof headerVariants> {
 export function Header( { variant = "default", onClose }: HeaderProps ) {
   const [open, setOpen] = React.useState(false);
 
+  const [currentVariant, setCurrentVariant] = React.useState(variant);
+
+  // Beispiel: Dynamisch auf Änderungen reagieren
+  React.useEffect(() => {
+    setCurrentVariant(variant);
+  }, [variant]);
+
   return (
-    <header className={cn("z-50 top-0 bg-background")}>
+    <header className={cn("z-50")}>
       <Container>
       <div className="flex justify-between items-center py-10">
         {/* Logo links */}
@@ -55,14 +62,16 @@ export function Header( { variant = "default", onClose }: HeaderProps ) {
               layout="fixed"
               height={60}
               width={120}
-              className={variant === "menu" ? "" : "dark:invert"}
+              className={variant === "fullscreen_navigation_menu" ? "" : "dark:invert"}
             />
         </Link>
 
         {/* Buttons rechts */}
         <div className="flex items-center gap-4">
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="default" size="lg" rounded="rounded-full">
+            <Button variant="default" size="lg" rounded="rounded-full" className={cn(
+              variant === "fullscreen_navigation_menu" && "bg-white text-black hover:bg-gray-100"
+            )}>
               Kontaktieren Sie uns
             </Button>
           </div>
@@ -75,6 +84,7 @@ export function Header( { variant = "default", onClose }: HeaderProps ) {
                   size="default"
                   rounded="rounded-full"
                   className="hidden md:flex items-center gap-2"
+                  onClick={() => setCurrentVariant("fullscreen_navigation_menu")}
                 >
                   <Menu />
                   Menü
@@ -85,7 +95,12 @@ export function Header( { variant = "default", onClose }: HeaderProps ) {
 
           {variant === "fullscreen_navigation_menu" && (
             <FullScreenNavigationMenuClose asChild>
-            <Button variant="outline" size="default" className="text-white flex items-center gap-2" rounded="rounded-full">
+            <Button 
+              variant="outline" 
+              size="default" 
+              className="text-white flex items-center gap-2" 
+              rounded="rounded-full"
+              onClick={() => setCurrentVariant("default")} >
                 <X className="w-6 h-6 text-black" />
                 <span className="text-black">Close</span>
               </Button>
