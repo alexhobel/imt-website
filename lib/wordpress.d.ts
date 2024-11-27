@@ -237,3 +237,15 @@ type FilterBarProps = {
   selectedTag?: string;
   selectedCategory?: string;
 };
+
+type adress = {
+  street: String;
+  city: String;
+  zip: String;
+}
+
+type contact = {
+  phone: String;
+  mobile: String;
+  mail: String
+}

@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 // Utility Imports
-import { Menu, ArrowRightSquare, X } from "lucide-react";
+import { Menu, ArrowRightSquare, X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
 
@@ -43,12 +43,6 @@ interface HeaderProps extends VariantProps<typeof headerVariants> {
 export function Header( { variant = "default", onClose }: HeaderProps ) {
   const [open, setOpen] = React.useState(false);
 
-  const [currentVariant, setCurrentVariant] = React.useState(variant);
-
-  // Beispiel: Dynamisch auf Änderungen reagieren
-  React.useEffect(() => {
-    setCurrentVariant(variant);
-  }, [variant]);
 
   return (
     <header className={cn("z-50")}>
@@ -66,25 +60,37 @@ export function Header( { variant = "default", onClose }: HeaderProps ) {
             />
         </Link>
 
-        {/* Buttons rechts */}
+        {/* Button contact */}
         <div className="flex items-center gap-4">
-          <div className="hidden md:flex items-center gap-4">
-            <Button variant="default" size="lg" rounded="rounded-full" className={cn(
-              variant === "fullscreen_navigation_menu" && "bg-white text-black hover:bg-gray-100"
-            )}>
+        {variant === "fullscreen_navigation_menu" ? (
+            <Button
+              variant="noBackground"
+              size="lg"
+              rounded="rounded-full"
+              className="text-white border-white hover:bg-gray-100 hover:text-black"
+            >
               Kontaktieren Sie uns
             </Button>
-          </div>
+          ) : (
+            <div className="hidden md:flex items-center gap-4">
+              <Button
+                variant="default"
+                size="lg"
+                rounded="rounded-full"
+              >
+                Kontaktieren Sie uns
+              </Button>
+            </div>
+          )}
           
           {variant === "default" && (
             <FullScreenNavigationMenu>
               <FullScreenNavigationMenuTrigger asChild>
                 <Button
-                  variant="ghost"
+                  variant="ghost" 
                   size="default"
                   rounded="rounded-full"
                   className="hidden md:flex items-center gap-2"
-                  onClick={() => setCurrentVariant("fullscreen_navigation_menu")}
                 >
                   <Menu />
                   Menü
@@ -99,8 +105,7 @@ export function Header( { variant = "default", onClose }: HeaderProps ) {
               variant="outline" 
               size="default" 
               className="text-white flex items-center gap-2" 
-              rounded="rounded-full"
-              onClick={() => setCurrentVariant("default")} >
+              rounded="rounded-full" >
                 <X className="w-6 h-6 text-black" />
                 <span className="text-black">Close</span>
               </Button>
