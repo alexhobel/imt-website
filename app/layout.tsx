@@ -12,6 +12,7 @@ import { mainMenu, contentMenu } from "@/menu.config";
 import { Section, Container } from "@/components/craft";
 import {Header} from '@/components/nav/header'
 import Balancer from "react-wrap-balancer";
+import { getAdressInformation, getContactInformation } from '@/lib/wordpress'
 
 import Logo from "@/public/imt-logo.svg";
 
@@ -35,11 +36,13 @@ export const metadata: Metadata = {
 // Revalidate content every hour
 export const revalidate = 3600;
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const adressData = await getAdressInformation();
+  const contactData = await getContactInformation();
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
@@ -52,7 +55,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
+           <Header adressData={adressData} contactData={contactData} />
           <Main>{children}</Main>
           <Footer />
         </ThemeProvider>

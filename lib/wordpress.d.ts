@@ -238,13 +238,13 @@ type FilterBarProps = {
   selectedCategory?: string;
 };
 
-type adress = {
+export type Adress = {
   street: String;
   city: String;
   zip: String;
 }
 
-type contact = {
+export type Contact = {
   phone: String;
   mobile: String;
   mail: String

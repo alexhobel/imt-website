@@ -4,6 +4,7 @@ import Link from "next/link";
 import BackButton from "@/components/back";
 import { Metadata } from "next";
 
+
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "All Authors",

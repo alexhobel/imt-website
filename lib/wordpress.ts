@@ -11,6 +11,8 @@ import {
   Page,
   Author,
   FeaturedMedia,
+  Adress,
+  Contact
 } from "./wordpress.d";
 
 // WordPress Config
@@ -195,4 +197,52 @@ export async function getFeaturedMediaById(id: number): Promise<FeaturedMedia> {
   const response = await fetch(url);
   const featuredMedia: FeaturedMedia = await response.json();
   return featuredMedia;
+}
+
+export async function getContactInformation(): Promise<Contact> {
+  const url = getUrl("/wp-json/wp/v2/pages", { slug: "contact" });
+  const response = await fetch(url);
+  const pages = await response.json();
+
+  if (!pages || pages.length === 0) {
+    throw new Error("Contact page not found");
+  }
+
+  const content = pages[0].content.rendered;
+  const contact: Contact = {
+    phone: extractValueFromContent(content, "phone"),
+    mobile: extractValueFromContent(content, "mobile"),
+    mail: extractValueFromContent(content, "mail"),
+  };
+
+  return contact;
+}
+
+export async function getAdressInformation(): Promise<Adress> {
+  const url = getUrl("/wp-json/wp/v2/pages", { slug: "adress" });
+  const response = await fetch(url);
+  const pages = await response.json();
+
+  if (!pages || pages.length === 0) {
+    throw new Error("Adress page not found");
+  }
+
+  const content = pages[0].content.rendered;
+  const adress: Adress = {
+    street: extractValueFromContent(content, "Street"),
+    city: extractValueFromContent(content, "City"),
+    zip: extractValueFromContent(content, "Zip"),
+  };
+
+  return adress;
+}
+
+/**
+ * Extracts a value from the rendered HTML content using a key.
+ * Example: <p>Key: Value</p>
+ */
+function extractValueFromContent(content: string, key: string): string {
+  const regex = new RegExp(`<p>${key}:\\s*(.*?)\\s*<\\/p>`, "i");
+  const match = content.match(regex);
+  return match ? match[1].trim() : "";
 }
