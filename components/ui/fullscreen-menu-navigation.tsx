@@ -21,7 +21,23 @@ export async function FullScreenNavigationMenu({
   contactData: { phone: string; mail: string };
   children: React.ReactNode;
 }) {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
+  React.useEffect(() => {
+    if (isMenuOpen) {
+      // Scrollen deaktivieren
+      document.body.style.overflow = "hidden";
+    } else {
+      // Scrollen aktivieren
+      document.body.style.overflow = "";
+    }
+    return () => {
+      // Cleanup, wenn die Komponente entfernt wird
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
+  
   return (
     <FullScreenNavigationMenuRoot>
       {children}
@@ -57,7 +73,7 @@ export async function FullScreenNavigationMenu({
         <div className="w-1 h-full"></div>
 
         {/* Rechte Spalte mit Kontakt- und Adressdaten */}
-        <div className="flex flex-col justify-center items-end w-1/3 px-8 space-y-6 text-base sm:text-lg md:text-xl lg:text-2xl">
+        <div className="flex flex-col justify-center items-end w-1/3 px-8 space-y-6 text-base sm:text-lg md:text-xl lg:text-xl">
         
         {/* Kontaktdaten */}
         <div className="space-y-1 w-full text-right pb-4">
@@ -71,7 +87,7 @@ export async function FullScreenNavigationMenu({
             </a>
           </p>
           {/* Trennlinie mit Abstand */}
-          <div className="border-b border-white w-1/2 ml-auto pt-4"></div>
+          <div className="border-b border-white w-[228px] ml-auto pt-4"></div>
         </div>
 
         {/* Adressdaten */}
@@ -81,7 +97,7 @@ export async function FullScreenNavigationMenu({
             {adressData.zip} {adressData.city}
           </p>
           {/* Trennlinie mit Abstand */}
-          <div className="border-b border-white w-1/2 ml-auto pt-4"></div>
+          <div className="border-b border-white w-[228px] ml-auto pt-4"></div>
         </div>
 
         </div>
