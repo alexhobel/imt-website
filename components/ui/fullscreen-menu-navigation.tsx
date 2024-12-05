@@ -3,6 +3,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { mainMenu } from "@/menu.config";
 import Link from "next/link";
 import { Header } from "@/components/nav/header";
+import { usePathname } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image"; // Zum Anzeigen von Icons
 import linkedinIcon from "@/public/icons/linkedin.svg";
@@ -27,6 +28,7 @@ export async function FullScreenNavigationMenu({
   children: React.ReactNode;
 }) {
 
+  const pathname = usePathname();
 
   return (
     <FullScreenNavigationMenuRoot>
@@ -42,22 +44,37 @@ export async function FullScreenNavigationMenu({
           <div className="flex flex-grow">
             {/* left side */}
             <div className="flex flex-col justify-center items-start w-2/3 px-16">
-              <ul className="space-y-4 font-bold text-4xl sm:text-4xl md:text-5xl lg:text-6xl">
-                {Object.entries(mainMenu).map(([key, { href, displayText }]) => (
+
+            <ul className="space-y-4 font-bold text-4xl sm:text-4xl md:text-5xl lg:text-6xl">
+              {Object.entries(mainMenu).map(([key, { href, displayText }]) => {
+                const isActive = pathname === href;
+
+                return (
                   <li key={key} className="relative group">
-                    <Link
-                      href={href}
-                      className="flex items-center hover:opacity-80 transition-opacity"
-                    >
-                      <span className="mt-2">{displayText}</span>
-                      <ArrowRight
-                        className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity translate-y-2.5 rotate-45"
-                        size={60}
-                      />
-                    </Link>
+                    <FullScreenNavigationMenuClose asChild>
+                      <Link
+                        href={href}
+                        className={`flex items-center px-4 py-2 rounded transition-all ${
+                          isActive
+                            ? "bg-transparent text-white"
+                            : "text-white/50 hover:bg-primary hover:text-white"
+                        }`}
+                      >
+                        <span className="mt-2">{displayText}</span>
+                        <ArrowRight
+                          className={`ml-2 transition-opacity duration-200 transform translate-y-2.5 rotate-45 opacity-0 group-hover:opacity-100 ${
+                            isActive ? "text-white" : "text-white"
+                          }`}
+                          size={60}
+                        />
+                      </Link>
+                    </FullScreenNavigationMenuClose>
                   </li>
-                ))}
-              </ul>
+                );
+              })}
+            </ul>
+
+
             </div>
 
             {/* Unsichtbare Trennlinie */}

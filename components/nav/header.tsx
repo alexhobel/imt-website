@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 // Utility Imports
@@ -51,7 +51,6 @@ export function Header({
   contactData 
 }: HeaderProps) {
   const [open, setOpen] = React.useState(false);
-
   return (
     <header className={cn("z-50")}>
       <Container>

@@ -1,29 +1,29 @@
 // Define the menu items
 export const mainMenu = {
-  home:{
+  home: {
     href: "/",
     displayText: "Home"
-  }, 
-  digitalEngineering:{
-    href: "/",
+  },
+  digitalEngineering: {
+    href: "/digital-engineering",
     displayText: "Digitales Engineering"
-  }, 
-  digitalTwin:{
-    href: "/",
+  },
+  digitalTwin: {
+    href: "/digital-twin",
     displayText: "Digitaler Zwilling"
-  }, 
-  company:{
-    href: "/",
+  },
+  company: {
+    href: "/about",
     displayText: "Unternehmen"
   },
-  career:{
-    href: "/",
+  career: {
+    href: "/careers",
     displayText: "Karriere"
   }
 };
 
 export const contentMenu = {
-  categories: "/posts/categories",
-  tags: "/posts/tags",
-  authors: "/posts/authors",
+  categories: "/blog/categories",
+  tags: "/blog/tags",
+  authors: "/blog/authors",
 };
