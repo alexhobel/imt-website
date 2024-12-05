@@ -20,16 +20,16 @@ import {
   FullScreenNavigationMenuTrigger,
   FullScreenNavigationMenuClose,
 } from "@/components/ui/fullscreen-menu-navigation";
-import { Container } from "@/components/craft";
+import { ContentContainer } from "@/components/craft";
 
-import Logo from "@/public/imt-logo.svg";
-import LogoWhite from "@/public/imt-logo-white.svg";
+import Logo from "@/public/logo/imt-logo.svg";
+import LogoWhite from "@/public/logo/imt-logo-white.svg";
 import { mainMenu } from "@/menu.config";
 
 const headerVariants = cva("z-50 top-0 fade-in", {
   variants: {
     variant: {
-      default: "bg-background",
+      default: "bg-transparent",
       fullscreen_navigation_menu: "bg-red-600 text-white",
     },
   },
@@ -52,8 +52,8 @@ export function Header({
 }: HeaderProps) {
   const [open, setOpen] = React.useState(false);
   return (
-    <header className={cn("z-50")}>
-      <Container>
+    <header className={cn("z-50 absolute top-0 left-0 w-full z-50 bg-transparent")}>
+      <ContentContainer>
         <div className="flex justify-between items-center py-10">
           {/* Logo links */}
           <Link
@@ -139,7 +139,7 @@ export function Header({
             </Sheet>
           </div>
         </div>
-      </Container>
+      </ContentContainer>
     </header>
   );
 }

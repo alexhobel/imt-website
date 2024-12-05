@@ -9,12 +9,12 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Main } from "@/components/craft";
 import { mainMenu, contentMenu } from "@/menu.config";
-import { Section, Container } from "@/components/craft";
+import { Section, ContentContainer } from "@/components/craft";
 import {Header} from '@/components/nav/header'
 import Balancer from "react-wrap-balancer";
 import { getAdressInformation, getContactInformation } from '@/lib/wordpress'
 
-import Logo from "@/public/imt-logo.svg";
+import Logo from "@/public/logo/imt-logo.svg";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -27,10 +27,10 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: "WordPress & Next.js Starter by 9d8",
+  title: "IMT Website",
   description:
-    "A starter template for Next.js with WordPress as a headless CMS.",
-  metadataBase: new URL("https://wp.9d8.dev"),
+    "Website for Software Company IMT",
+  metadataBase: new URL("https://dev.imt-services.de/"),
 };
 
 // Revalidate content every hour
@@ -55,7 +55,7 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-           <Header adressData={adressData} contactData={contactData} />
+          <Header adressData={adressData} contactData={contactData} />
           <Main>{children}</Main>
           <Footer />
         </ThemeProvider>
@@ -71,7 +71,7 @@ const Footer = () => {
   return (
     <footer>
       <Section>
-        <Container className="grid md:grid-cols-[1.5fr_0.5fr_0.5fr] gap-12">
+        <ContentContainer className="grid md:grid-cols-[1.5fr_0.5fr_0.5fr] gap-12">
           <div className="flex flex-col gap-6 not-prose">
             <Link href="/">
               <h3 className="sr-only">brijr/components</h3>
@@ -111,14 +111,14 @@ const Footer = () => {
               </Link>
             ))}
           </div>
-        </Container>
-        <Container className="border-t not-prose flex flex-col md:flex-row md:gap-2 gap-6 justify-between md:items-center">
+        </ContentContainer>
+        <ContentContainer className="border-t not-prose flex flex-col md:flex-row md:gap-2 gap-6 justify-between md:items-center">
           <ThemeToggle />
           <p className="text-muted-foreground">
             © <a href="https://9d8.dev">9d8</a>. All rights reserved.
             2024-present.
           </p>
-        </Container>
+        </ContentContainer>
       </Section>
     </footer>
   );

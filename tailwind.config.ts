@@ -12,7 +12,7 @@ const config = {
   ],
   prefix: "",
   theme: {
-    container: {
+    ContentContainer: {
       center: true,
       screens: {
         "13Display": "1920px",
@@ -27,6 +27,7 @@ const config = {
         input: "var(--input)",
         ring: "var(--ring)",
         background: "var(--background)",
+        backgroundTwo: "var(--background-two)",
         foreground: "var(--foreground)",
         primary: {
           DEFAULT: "var(--primary)",

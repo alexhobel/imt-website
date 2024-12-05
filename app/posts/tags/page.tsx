@@ -1,5 +1,5 @@
 import { getAllTags } from "@/lib/wordpress";
-import { Section, Container } from "@/components/craft";
+import { Section, ContentContainer } from "@/components/craft";
 import { Metadata } from "next";
 import Link from "next/link";
 import BackButton from "@/components/back";
@@ -16,7 +16,7 @@ export default async function Page() {
 
   return (
     <Section>
-      <Container>
+      <ContentContainer>
         <BackButton />
         <h2>All Tags</h2>
         <div className="grid">
@@ -26,7 +26,7 @@ export default async function Page() {
             </Link>
           ))}
         </div>
-      </Container>
+      </ContentContainer>
     </Section>
   );
 }

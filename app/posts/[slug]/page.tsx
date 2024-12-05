@@ -5,7 +5,7 @@ import {
   getCategoryById,
 } from "@/lib/wordpress";
 
-import { Section, Container, Article, Main } from "@/components/craft";
+import { Section, ContentContainer, Article, Main } from "@/components/craft";
 import { Metadata } from "next";
 import { badgeVariants } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -38,7 +38,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <Section>
-      <Container>
+      <ContentContainer>
         <h1>
           <Balancer>
             <span
@@ -72,7 +72,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
           />
         </div>
         <Article dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
-      </Container>
+      </ContentContainer>
     </Section>
   );
 }

@@ -17,7 +17,7 @@ type LayoutProps = {
 const Layout = ({ children, className }: LayoutProps) => {
   return (
     <html
-      lang="en"
+      lang="de"
       suppressHydrationWarning
       className={cn("scroll-smooth antialiased focus:scroll-auto", className)}
     >
@@ -77,14 +77,14 @@ const Section = ({ children, className, id }: SectionProps) => {
   );
 };
 
-// Container Component
-type ContainerProps = {
+// ContentContainer Component
+type ContentContainerProps = {
   children: React.ReactNode;
   className?: string;
   id?: string;
 };
 
-const Container = ({ children, className, id }: ContainerProps) => {
+const ContentContainer = ({ children, className, id }: ContentContainerProps) => {
   return (
     <div className={cn("mx-auto", "px-10", className)} id={id}>
       {children}
@@ -137,4 +137,4 @@ const Article = ({
   );
 };
 
-export { Layout, Main, Section, Container, Article };
+export { Layout, Main, Section, ContentContainer, Article };

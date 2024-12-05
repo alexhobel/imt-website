@@ -4,65 +4,66 @@
 
 @layer base {
   :root {
-    --background: #ffffff;           /* Weiß */
-    --foreground: #0a0a0a;           /* Fast schwarz */
+    --background: #ffffff;
+    --background-two: #f1f0f4;
+    --foreground: #0a0a0a;
 
-    --card: #ffffff;                 /* Weiß */
-    --card-foreground: #0a0a0a;      /* Fast schwarz */
+    --card: #ffffff;
+    --card-foreground: #0a0a0a;
 
-    --popover: #ffffff;              /* Weiß */
-    --popover-foreground: #0a0a0a;   /* Fast schwarz */
+    --popover: #ffffff;
+    --popover-foreground: #0a0a0a;
 
-    --primary: #df0029;              /* Primärfarbe */
-    --primary-foreground: #ffffff;   /* Weiß für Text auf Primärfarbe */
+    --primary: #df0029;
+    --primary-foreground: #ffffff;
 
-    --secondary: #0f1112;            /* Sekundärfarbe */
-    --secondary-foreground: #ffffff; /* Weiß für Text auf Sekundärfarbe */
+    --secondary: #0f1112;
+    --secondary-foreground: #ffffff;
 
-    --muted: #f5f5f5;                /* Sehr helles Grau */
-    --muted-foreground: #737373;     /* Mittelgrau für Text */
+    --muted: #f5f5f5;
+    --muted-foreground: #737373;
 
-    --accent: #f5f5f5;               /* Sehr helles Grau */
-    --accent-foreground: #0a0a0a;    /* Fast schwarz für Text auf Akzentfarbe */
+    --accent: #f5f5f5;
+    --accent-foreground: #0a0a0a;
 
-    --destructive: #c83232;          /* Rotton für destruktive Aktionen */
-    --destructive-foreground: #ffffff; /* Weiß für Text auf destruktiver Farbe */
+    --destructive: #c83232;
+    --destructive-foreground: #ffffff;
 
-    --border: #e6e6e6;               /* Hellgrau */
-    --input: #e6e6e6;                /* Hellgrau für Inputs */
-    --ring: #0a0a0a;                 /* Fast schwarz für Ringe */
+    --border: #e6e6e6;
+    --input: #e6e6e6;
+    --ring: #0a0a0a;
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: #0a0a0a;           /* Fast schwarz */
-    --foreground: #ffffff;           
+    --background: #0a0a0a;
+    --foreground: #ffffff;
 
-    --card: #0a0a0a;                 
-    --card-foreground: #ffffff;      
+    --card: #0a0a0a;
+    --card-foreground: #ffffff;
 
-    --popover: #0a0a0a;              
-    --popover-foreground: #ffffff;   
+    --popover: #0a0a0a;
+    --popover-foreground: #ffffff;
 
-    --primary: #df0029;              
-    --primary-foreground: #ffffff;   
+    --primary: #df0029;
+    --primary-foreground: #ffffff;
 
-    --secondary: #0f1112;            
-    --secondary-foreground: #ffffff; 
+    --secondary: #0f1112;
+    --secondary-foreground: #ffffff;
 
-    --muted: #262626;                
-    --muted-foreground: #a3a3a3;     
+    --muted: #262626;
+    --muted-foreground: #a3a3a3;
 
-    --accent: #262626;               
-    --accent-foreground: #ffffff;    
+    --accent: #262626;
+    --accent-foreground: #ffffff;
 
-    --destructive: #a01e1e;          
-    --destructive-foreground: #ffffff; 
+    --destructive: #a01e1e;
+    --destructive-foreground: #ffffff;
 
-    --border: #262626;               
-    --input: #262626;                
-    --ring: #d2d2d2;                 
+    --border: #262626;
+    --input: #262626;
+    --ring: #d2d2d2;
   }
 }
 

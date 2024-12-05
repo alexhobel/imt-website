@@ -14,7 +14,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
-import { Section, Container } from "@/components/craft";
+import { Section, ContentContainer } from "@/components/craft";
 import PostCard from "@/components/posts/post-card";
 import FilterPosts from "./filter";
 
@@ -40,7 +40,7 @@ export default async function Page({
 
   return (
     <Section>
-      <Container>
+      <ContentContainer>
         <h1>Posts</h1>
         <FilterPosts
           authors={authors}
@@ -96,7 +96,7 @@ export default async function Page({
             </PaginationContent>
           </Pagination>
         </div>
-      </Container>
+      </ContentContainer>
     </Section>
   );
 }

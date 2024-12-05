@@ -1,5 +1,5 @@
 import { getAllPages } from "@/lib/wordpress";
-import { Section, Container } from "@/components/craft";
+import { Section, ContentContainer } from "@/components/craft";
 import Link from "next/link";
 
 export default async function Page() {
@@ -7,7 +7,7 @@ export default async function Page() {
 
   return (
     <Section>
-      <Container>
+      <ContentContainer>
         <h1>Pages</h1>
 
         <h2>All Pages</h2>
@@ -18,7 +18,7 @@ export default async function Page() {
             </Link>
           ))}
         </div>
-      </Container>
+      </ContentContainer>
     </Section>
   );
 }

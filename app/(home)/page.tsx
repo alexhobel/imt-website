@@ -1,41 +1,59 @@
 // Craft Imports
-import { Section, Container } from "@/components/craft";
-import Balancer from "react-wrap-balancer";
-
-// Components
+import { ContentContainer } from "@/components/craft";
 import Link from "next/link";
+import Image from "next/image";
 
-// Icons
-import { File, Pen, Tag, Boxes, User, Folder } from "lucide-react";
-
-// This page is using the craft.tsx component and design system
 export default function Home() {
   return (
-    <Section>
-      <Container >
-        <HomePage />
-      </Container>
-    </Section>
+    <HomePage />
   );
 }
 
 const HomePage = () => {
   return (
-    <div>
-      <h1>Ich bin die Startseite</h1>
-      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
+    <main>
+      {/* Hero Section */}
+      <section
+        className="bg-backgroundTwo min-h-screen flex items-center relative"
+        id="hero-section"
+      >
+        <ContentContainer>
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
+            {/* Textbereich */}
+            <div className="space-y-6">
+              {/* Überschrift */}
+              <h1 className="text-6xl font-bold text-foreground leading-tight">
+                Kompetenzzentrum für virtuellen Maschinenbau
+              </h1>
+              {/* Untertitel */}
+              <p className="text-lg text-foreground/75">
+                Wir programmieren Ihre Maschine
+              </p>
+              {/* Call to Action */}
+              <div>
+                <Link
+                  href="/services"
+                  className="inline-block bg-primary text-white px-6 py-3 rounded-md text-lg hover:bg-primary/90 transition-all"
+                >
+                  Lass uns arbeiten
+                </Link>
+              </div>
+            </div>
 
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.   
-
-Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.   
-
-Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.   
-
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.   
-
-At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.   
-
-Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita</p>
-    </div>
+            {/* Bildbereich */}
+            <div className="hidden lg:block">
+              <Image
+                src="/images/robot-hero-section.png"
+                alt="Roboter Arm in Aktion"
+                width={800}
+                height={600}
+                priority
+                className="object-contain"
+              />
+            </div>
+          </div>
+        </ContentContainer>
+      </section>
+    </main>
   );
 };

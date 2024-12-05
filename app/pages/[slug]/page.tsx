@@ -1,5 +1,5 @@
 import { getPageBySlug } from "@/lib/wordpress";
-import { Section, Container, Main } from "@/components/craft";
+import { Section, ContentContainer, Main } from "@/components/craft";
 import { Metadata } from "next";
 
 import BackButton from "@/components/back";
@@ -21,11 +21,11 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <Section>
-      <Container>
+      <ContentContainer>
         <BackButton />
         <h1 className="pt-12">{page.title.rendered}</h1>
         <div dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
-      </Container>
+      </ContentContainer>
     </Section>
   );
 }
