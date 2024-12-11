@@ -12,7 +12,7 @@ const config = {
   ],
   prefix: "",
   theme: {
-    ContentContainer: {
+    container: {
       center: true,
       screens: {
         "13Display": "1920px",
@@ -20,7 +20,7 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
+        sans: ["Helvetica Neue", ...fontFamily.sans]
       },
       colors: {
         border: "var(--border)",
