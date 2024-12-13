@@ -1,19 +1,24 @@
 import {getRequestConfig} from 'next-intl/server';
 import {routing} from './routing';
- 
+
+// Statische Imports
+const messagesMap = {
+  en: () => import("@/messages/en.json"),
+  de: () => import("@/messages/de.json"),
+};
+
 export default getRequestConfig(async ({requestLocale}) => {
-  // This typically corresponds to the `[locale]` segment
   let locale = await requestLocale;
- 
+
   // Ensure that a valid locale is used
   if (!locale || !routing.locales.includes(locale as any)) {
     locale = routing.defaultLocale;
   }
- 
+
+  console.log("locale: ", locale);
+
   return {
     locale,
-    //messages: (await import(`/messages/${locale}.json`)).default
-    messages: (await import("@/messages/de.json")).default
-    //messages: (await import(`../../messages/${locale}.json`)).default
+    messages: (await messagesMap[locale]()).default,
   };
 });
