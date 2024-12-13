@@ -5,22 +5,23 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 // Utility Imports
 import { cn } from "@/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
 
 // Component Imports
-import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Separator } from "@/components/ui/separator";
+import { Button } from "@/app/[locale]/components/ui/button";
+import { ScrollArea } from "@/app/[locale]/components/ui/scroll-area";
+import { Sheet, SheetContent, SheetTrigger } from "@/app/[locale]/components/ui/sheet";
+import { Separator } from "@/app/[locale]/components/ui/separator";
 import {
   FullScreenNavigationMenu,
   FullScreenNavigationMenuTrigger,
   FullScreenNavigationMenuClose,
-} from "@/components/ui/fullscreen-menu-navigation";
-import { ContentContainer } from "@/components/craft";
+} from "@/app/[locale]/components/ui/fullscreen-menu-navigation";
+import { ContentContainer } from "@/app/[locale]/components/craft";
 
 import Logo from "@/public/logo/imt-logo.svg";
 import LogoWhite from "@/public/logo/imt-logo-white.svg";
@@ -51,6 +52,7 @@ export function Header({
   contactData 
 }: HeaderProps) {
   const [open, setOpen] = React.useState(false);
+  const t = useTranslations('header');
   return (
     <header className={cn("z-50 absolute top-0 left-0 w-full z-50 bg-transparent")}>
       <ContentContainer>
@@ -79,12 +81,12 @@ export function Header({
                 rounded="rounded-full"
                 className="text-white border-white hover:bg-gray-100 hover:text-black"
               >
-                Kontaktieren Sie uns
+                 {t("cta")}
               </Button>
             ) : (
               <div className="hidden md:flex items-center gap-4">
                 <Button variant="default" size="lg" rounded="rounded-full">
-                  Kontaktieren Sie uns
+                {t("cta")}
                 </Button>
               </div>
             )}
@@ -96,13 +98,13 @@ export function Header({
               >
                 <FullScreenNavigationMenuTrigger asChild>
                   <Button
-                    variant="ghost"
+                    variant="menu"
                     size="default"
                     rounded="rounded-full"
                     className="hidden md:flex items-center gap-2"
                   >
                     <Menu />
-                    Menü
+                    {t("menuButton")}
                   </Button>
                 </FullScreenNavigationMenuTrigger>
               </FullScreenNavigationMenu>

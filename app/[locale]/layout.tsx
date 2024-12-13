@@ -1,21 +1,27 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
-import { ThemeProvider } from "@/components/theme/theme-provider";
+import { ThemeProvider } from "@/app/[locale]/components/theme/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
 
-import "./globals.css";
+import "@/app/globals.css";
 
-import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/theme/theme-toggle";
-import { Main } from "@/components/craft";
+import { Button } from "@/app/[locale]/components/ui/button";
+import { ThemeToggle } from "@/app/[locale]/components/theme/theme-toggle";
+import { Main } from "@/app/[locale]/components/craft";
 import { mainMenu, contentMenu } from "@/menu.config";
-import { Section, ContentContainer } from "@/components/craft";
-import {Header} from '@/components/nav/header'
+import { Section, ContentContainer } from "@/app/[locale]/components/craft";
+import {Header} from '@/app/[locale]/components/nav/header'
 import Balancer from "react-wrap-balancer";
 import { getAdressInformation, getContactInformation } from '@/lib/wordpress'
 
-import Logo from "@/public/logo/imt-logo.svg";
+//next-intl / i18n imports
+import {NextIntlClientProvider} from 'next-intl';
+import {getMessages} from 'next-intl/server';
+import {notFound} from 'next/navigation';
+import {routing} from '@/i18n/routing';
 
+//Images Import
+import Logo from "@/public/logo/imt-logo.svg";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -38,13 +44,25 @@ export const revalidate = 3600;
 
 export default async function RootLayout({
   children,
+  params: {locale}
 }: {
   children: React.ReactNode;
+  params: {locale: string};
 }) {
   const adressData = await getAdressInformation();
   const contactData = await getContactInformation();
+
+  // Ensure that the incoming `locale` is valid
+  if (!routing.locales.includes(locale as any)) {
+    notFound();
+  }
+
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages();
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head />
       <body
         className={cn("min-h-screen font-sans antialiased", fontSans.variable)}
@@ -55,8 +73,10 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header adressData={adressData} contactData={contactData} />
-          <Main>{children}</Main>
+          <NextIntlClientProvider messages={messages}>
+              <Header adressData={adressData} contactData={contactData} />
+              <Main>{children}</Main>
+          </NextIntlClientProvider>
           <Footer />
         </ThemeProvider>
         <Analytics />

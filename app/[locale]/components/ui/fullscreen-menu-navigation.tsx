@@ -2,7 +2,7 @@ import * as React from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { mainMenu } from "@/menu.config";
 import Link from "next/link";
-import { Header } from "@/components/nav/header";
+import { Header } from "@/app/[locale]/components/nav/header";
 import { usePathname } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image"; // Zum Anzeigen von Icons

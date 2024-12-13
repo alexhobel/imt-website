@@ -1,19 +1,16 @@
 // Craft Imports
-import { ContentContainer } from "@/components/craft";
-import Link from "next/link";
+import { ContentContainer } from "@/app/[locale]/components/craft";
+//import Link from "next/link";
 import Image from "next/image";
-import { getTranslations } from "@/hooks/useTranslation";
+import { useTranslations } from "next-intl";
+import {Link} from '@/i18n/routing';
 
 export default async function Home({ params }: { params: { locale: string } }) {
-  const locale = params?.locale || "de"; // Standard: Deutsch
-  const translations = getTranslations(locale);
-
-  return (
-    <HomePage translations={translations} />
-  );
+  return <HomePage />;
 }
 
-const HomePage = ({ translations }: { translations: any }) => {
+const HomePage = () => {
+  const t = useTranslations('home');
   return (
     <main>
       {/* Hero Section */}
@@ -27,19 +24,17 @@ const HomePage = ({ translations }: { translations: any }) => {
             <div className="space-y-6">
               {/* Überschrift */}
               <h1 className="text-6xl !font-extrabold text-foreground leading-tight">
-                {translations.hero.title}
+                {t("hero.title")}
               </h1>
               {/* Untertitel */}
-              <p className="text-lg text-foreground/75">
-                {translations.hero.subtitle}
-              </p>
+              <p className="text-lg text-foreground/75">{t("hero.subtitle")}</p>
               {/* Call to Action */}
               <div>
                 <Link
                   href="/services"
                   className="inline-block bg-primary text-white px-6 py-3 rounded-md text-lg hover:bg-primary/90 transition-all"
                 >
-                  {translations.hero.cta}
+                  {t("hero.cta")}
                 </Link>
               </div>
             </div>
@@ -49,7 +44,7 @@ const HomePage = ({ translations }: { translations: any }) => {
         <div className="hidden lg:block inset-0 right-0 z-0 flex justify-end items-center p-0 !mt-0 !mb-0">
           <Image
             src="/images/robot-hero-section.png"
-            alt={translations.hero.imageAlt}
+            alt="alt"
             width={800}
             height={600}
             priority
