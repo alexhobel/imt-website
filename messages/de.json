@@ -11,9 +11,11 @@
     "menuButton": "Menü"
   },
   "menu": {
-    "home": "Startseite",
-    "services": "Dienstleistungen",
-    "about": "Über uns"
+    "home": "Home",
+    "digitalEngineering": "Digitales Engineering",
+    "digitalTwin": "Digitaler Zwilling",
+    "company": "Unternehmen",
+    "career": "Karriere"
   },
   "footer": {
     "logoAlt": "IMT Logo",

@@ -12,8 +12,10 @@
   },
   "menu": {
     "home": "Home",
-    "services": "Services",
-    "about": "About Us"
+    "digitalEngineering": "Digital Engineering",
+    "digitalTwin": "Digital Twin",
+    "company": "Company",
+    "career": "Career"
   },
   "footer": {
     "logoAlt": "IMT Logo",

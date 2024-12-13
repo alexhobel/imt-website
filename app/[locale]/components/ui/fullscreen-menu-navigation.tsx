@@ -1,22 +1,23 @@
 import * as React from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { mainMenu } from "@/menu.config";
-import Link from "next/link";
 import { Header } from "@/app/[locale]/components/nav/header";
 import { usePathname } from "next/navigation";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image"; // Zum Anzeigen von Icons
+import Image from "next/image";
 import linkedinIcon from "@/public/icons/linkedin.svg";
 import facebookIcon from "@/public/icons/facebook.svg";
 import xingIcon from "@/public/icons/xing.svg";
 import instagramIcon from "@/public/icons/instagram.svg";
+
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 
 const FullScreenNavigationMenuRoot = Dialog.Root;
 const FullScreenNavigationMenuTrigger = Dialog.Trigger;
 const FullScreenNavigationMenuContent = Dialog.Content;
 const FullScreenNavigationMenuClose = Dialog.Close;
 const FullScreenNavigationMenuOverlay = Dialog.Overlay;
-
 
 export async function FullScreenNavigationMenu({
   adressData,
@@ -27,8 +28,8 @@ export async function FullScreenNavigationMenu({
   contactData: { phone: string; mail: string };
   children: React.ReactNode;
 }) {
-
   const pathname = usePathname();
+  const t = useTranslations("menu");
 
   return (
     <FullScreenNavigationMenuRoot>
@@ -42,54 +43,48 @@ export async function FullScreenNavigationMenu({
             onClose={() => FullScreenNavigationMenuRoot.close()}
           />
           <div className="flex flex-grow">
-            {/* left side */}
+            {/* Left side */}
             <div className="flex flex-col justify-center items-start w-2/3 px-16">
+              <ul className="space-y-4 font-bold text-4xl sm:text-4xl md:text-5xl lg:text-6xl">
+                {Object.entries(mainMenu).map(([key, { href }]) => {
+                  const isActive = pathname === href;
 
-            <ul className="space-y-4 font-bold text-4xl sm:text-4xl md:text-5xl lg:text-6xl">
-              {Object.entries(mainMenu).map(([key, { href, displayText }]) => {
-                const isActive = pathname === href;
-
-                return (
-                  <li key={key} className="relative group">
-                    <FullScreenNavigationMenuClose asChild>
-                      <Link
-                        href={href}
-                        className={`flex items-center px-4 py-2 rounded transition-all ${
-                          isActive
-                            ? "bg-transparent text-white"
-                            : "text-white/50 hover:bg-primary hover:text-white"
-                        }`}
-                      >
-                        <span className="mt-2">{displayText}</span>
-                        <ArrowRight
-                          className={`ml-2 transition-opacity duration-200 transform translate-y-2.5 rotate-45 opacity-0 group-hover:opacity-100 ${
-                            isActive ? "text-white" : "text-white"
+                  return (
+                    <li key={key} className="relative group">
+                      <FullScreenNavigationMenuClose asChild>
+                        <Link
+                          href={href}
+                          className={`flex items-center px-4 py-2 rounded transition-all ${
+                            isActive
+                              ? "bg-transparent text-white"
+                              : "text-white/50 hover:bg-primary hover:text-white"
                           }`}
-                          size={60}
-                        />
-                      </Link>
-                    </FullScreenNavigationMenuClose>
-                  </li>
-                );
-              })}
-            </ul>
-
-
+                        >
+                          <span className="mt-2">{t(key)}</span>
+                          <ArrowRight
+                            className={`ml-2 transition-opacity duration-200 transform translate-y-2.5 rotate-45 opacity-0 group-hover:opacity-100 ${
+                              isActive ? "text-white" : "text-white"
+                            }`}
+                            size={60}
+                          />
+                        </Link>
+                      </FullScreenNavigationMenuClose>
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
 
             {/* Unsichtbare Trennlinie */}
             <div className="w-1 h-full"></div>
 
-            {/* right side*/}
+            {/* Right side */}
             <div className="flex flex-col justify-center items-end w-1/3 px-16 space-y-6 text-base sm:text-lg md:text-xl lg:text-xl mt-8">
               {/* Kontaktdaten */}
               <div className="space-y-1 w-full text-right pb-4">
                 <p>{contactData.phone}</p>
                 <p>
-                  <a
-                    href={`mailto:${contactData.mail}`}
-                    className="hover:underline"
-                  >
+                  <a href={`mailto:${contactData.mail}`} className="hover:underline">
                     {contactData.mail}
                   </a>
                 </p>
@@ -165,16 +160,10 @@ export async function FullScreenNavigationMenu({
 
               {/* Impressum und Datenschutz */}
               <div className="flex justify-center space-x-8 mt-8 pt-8 text-sm sm:text-base">
-                <a
-                  href="/impressum"
-                  className="hover:underline"
-                >
+                <a href="/impressum" className="hover:underline">
                   Impressum
                 </a>
-                <a
-                  href="/datenschutz"
-                  className="hover:underline"
-                >
+                <a href="/datenschutz" className="hover:underline">
                   Datenschutz
                 </a>
               </div>
