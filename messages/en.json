@@ -1,0 +1,38 @@
+{
+  "home": {
+    "hero": {
+      "title": "Competence Center for Virtual Mechanical Engineering",
+      "subtitle": "We program your machine",
+      "cta": "Let's get to work"
+    }
+  },
+  "header": {
+    "cta": "Contact Us",
+    "menuButton": "Menu"
+  },
+  "menu": {
+    "home": "Home",
+    "digitalEngineering": "Digital Engineering",
+    "digitalTwin": "Digital Twin",
+    "company": "Company",
+    "career": "Career"
+  },
+  "footer": {
+    "logoAlt": "IMT Logo",
+    "description": "Website for the software company IMT.",
+    "websiteHeading": "Website",
+    "blogHeading": "Blog",
+    "copyright": "© {year} IMT. All rights reserved.",
+    "mainMenu": {
+      "home": "Home",
+      "about": "About Us",
+      "services": "Services",
+      "contact": "Contact"
+    },
+    "contentMenu": {
+      "categories": "Categories",
+      "tags": "Tags",
+      "authors": "Authors"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "home":{
+    "hero": {
+      "title": "Kompetenzzentrum für virtuellen Maschinenbau",
+      "subtitle": "Wir programmieren Ihre Maschine",
+      "cta": "Lass uns arbeiten"
+    }
+  },
+  "header": {
+    "cta": "Kontaktieren Sie uns",
+    "menuButton": "Menü"
+  },
+  "menu": {
+    "home": "Home",
+    "digitalEngineering": "Digitales Engineering",
+    "digitalTwin": "Digitaler Zwilling",
+    "company": "Unternehmen",
+    "career": "Karriere"
+  },
+  "footer": {
+    "logoAlt": "IMT Logo",
+    "description": "Website für die Softwarefirma IMT.",
+    "websiteHeading": "Webseite",
+    "blogHeading": "Blog",
+    "copyright": "© {year} IMT. Alle Rechte vorbehalten.",
+    "mainMenu": {
+      "home": "Startseite",
+      "about": "Über uns",
+      "services": "Dienstleistungen",
+      "contact": "Kontakt"
+    },
+    "contentMenu": {
+      "categories": "Kategorien",
+      "tags": "Tags",
+      "authors": "Autoren"
+    }
+    }
+  }
+  
