@@ -1,8 +1,5 @@
 // Define the menu items
-export const mainMenu = {
-  home: {
-    href: "/",
-  },
+export const mainMenu = { 
   digitalEngineering: {
     href: "/digital-engineering",
   },

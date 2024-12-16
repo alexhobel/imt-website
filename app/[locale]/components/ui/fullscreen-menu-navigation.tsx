@@ -31,6 +31,17 @@ export async function FullScreenNavigationMenu({
   const pathname = usePathname();
   const t = useTranslations("menu");
 
+  // Extrahiere den aktuellen Pfad ohne Sprachsegment (/en oder /de)
+  const getPathWithoutLocale = (path: string) => {
+    const segments = path.split("/").filter(Boolean); // Filtere leere Segmente
+    if (segments.length > 0 && (segments[0] === "en" || segments[0] === "de")) {
+      segments.shift(); // Entferne das Sprachsegment
+    }
+    return `/${segments.join("/")}`; // Füge den verbleibenden Pfad wieder zusammen
+  };
+
+  const currentPath = getPathWithoutLocale(pathname || "/");
+
   return (
     <FullScreenNavigationMenuRoot>
       {children}
@@ -47,8 +58,8 @@ export async function FullScreenNavigationMenu({
             <div className="flex flex-col justify-center items-start w-2/3 px-16">
               <ul className="space-y-4 font-bold text-4xl sm:text-4xl md:text-5xl lg:text-6xl">
                 {Object.entries(mainMenu).map(([key, { href }]) => {
-                  const isActive = pathname === href;
-
+                  // Vergleiche den aktuellen Pfad mit dem Menülink
+                  const isActive = currentPath === href;
                   return (
                     <li key={key} className="relative group">
                       <FullScreenNavigationMenuClose asChild>
