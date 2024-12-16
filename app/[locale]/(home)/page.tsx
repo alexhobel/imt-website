@@ -6,6 +6,10 @@ import { useTranslations } from "next-intl";
 import {Link} from '@/i18n/routing';
 import { Button } from "@/app/[locale]/components/ui/button";
 import "@radix-ui/themes/styles.css";
+import Card from "@/app/[locale]/components/ui/card";
+import commissioningIcon from "@/public/icons/comissioning-icon.svg"
+import digitalTwinIcon from "@/public/icons/digital-twin-icon.svg"
+import servicesIcon from "@/public/icons/services-icon.svg"
 
 
 export default async function Home({ params }: { params: { locale: string } }) {
@@ -98,6 +102,30 @@ const HomePage = () => {
           </Link>
         </div>
 
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+          <Card
+            title="Virtuelle Inbetriebnahme"
+            description="Die Virtuelle Inbetriebnahme testet Anlagen digital, um Fehler zu vermeiden und Effizienz zu steigern."
+            icon={commissioningIcon}
+            link="/virtual-commissioning"
+          />
+          <Card
+            title="Zusätzliche Digitale Services"
+            description="Erweiterte digitale Lösungen zur Prozessoptimierung und Kundennutzensteigerung."
+            icon={servicesIcon}
+            link="/digital-services"
+          />
+          <Card
+            title="Digitaler Zwilling"
+            description="Ein Digitaler Zwilling ist eine virtuelle Abbildung eines physischen Objekts."
+            icon={digitalTwinIcon}
+            link="/digital-twin"
+            backgroundColor="bg-primary text-white"
+          />
+        </div>
+        
       </ContentContainer>
       </section>
     </main>
