@@ -7,8 +7,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"; // Ensure this is the correct import path
-import { Button } from "@/components/ui/button"; // Add this import for the Button component
+} from "@/app/[locale]/components/ui/select"; // Ensure this is the correct import path
+import { Button } from "@/app/[locale]/components/ui/button"; // Add this import for the Button component
 
 interface Author {
   id: number;

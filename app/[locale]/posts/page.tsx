@@ -12,10 +12,10 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination";
+} from "@/app/[locale]/components/ui/pagination";
 
-import { Section, ContentContainer } from "@/components/craft";
-import PostCard from "@/components/posts/post-card";
+import { Section, ContentContainer } from "@/app/[locale]/components/craft";
+import PostCard from "@/app/[locale]/components/posts/post-card";
 import FilterPosts from "./filter";
 
 export default async function Page({

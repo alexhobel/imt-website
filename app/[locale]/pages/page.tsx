@@ -1,5 +1,5 @@
 import { getAllPages } from "@/lib/wordpress";
-import { Section, ContentContainer } from "@/components/craft";
+import { Section, ContentContainer } from "@/app/[locale]/components/craft";
 import Link from "next/link";
 
 export default async function Page() {

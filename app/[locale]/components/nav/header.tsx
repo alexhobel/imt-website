@@ -40,14 +40,12 @@ const headerVariants = cva("z-50 top-0 fade-in", {
 });
 
 interface HeaderProps extends VariantProps<typeof headerVariants> {
-  onClose?: () => void;
   adressData: any; // Passe den Typ an deine Struktur an
   contactData: any; // Passe den Typ an deine Struktur an
 }
 
 export function Header({ 
   variant = "default", 
-  onClose, 
   adressData, 
   contactData 
 }: HeaderProps) {
@@ -166,7 +164,10 @@ function MenuContent({ onClose }: { onClose: () => void }) {
         <div className="flex flex-col space-y-3">
           <h3 className="text-white mt-6">Menu</h3>
           <Separator />
-          {Object.entries(mainMenu).map(([key, href]) => (
+          
+          {Object.entries(mainMenu).map(([key, value]) => {
+          const href = value.href; // Extrahiere den String aus dem Objekt
+          return (
             <Link
               key={key}
               href={href}
@@ -178,7 +179,9 @@ function MenuContent({ onClose }: { onClose: () => void }) {
             >
               {key.charAt(0).toUpperCase() + key.slice(1)}
             </Link>
-          ))}
+          );
+        })}
+
         </div>
       </ScrollArea>
     </>

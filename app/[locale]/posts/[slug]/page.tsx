@@ -5,9 +5,9 @@ import {
   getCategoryById,
 } from "@/lib/wordpress";
 
-import { Section, ContentContainer, Article, Main } from "@/components/craft";
+import { Section, ContentContainer, Article, Main } from "@/app/[locale]/components/craft";
 import { Metadata } from "next";
-import { badgeVariants } from "@/components/ui/badge";
+import { badgeVariants } from "@/app/[locale]/components/ui/badge";
 import { cn } from "@/lib/utils";
 
 import Link from "next/link";

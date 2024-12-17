@@ -51,7 +51,6 @@ export async function FullScreenNavigationMenu({
             adressData={adressData}
             contactData={contactData}
             variant="fullscreen_navigation_menu"
-            onClose={() => FullScreenNavigationMenuRoot.close()}
           />
           <div className="flex flex-grow">
             {/* Left side */}

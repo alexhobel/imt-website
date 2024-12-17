@@ -15,10 +15,8 @@ export default getRequestConfig(async ({requestLocale}) => {
     locale = routing.defaultLocale;
   }
 
-  console.log("locale: ", locale);
-
   return {
     locale,
-    messages: (await messagesMap[locale]()).default,
+    messages: (await messagesMap[locale as keyof typeof messagesMap]()).default,
   };
 });

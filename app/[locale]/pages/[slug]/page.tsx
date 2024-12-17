@@ -1,8 +1,8 @@
 import { getPageBySlug } from "@/lib/wordpress";
-import { Section, ContentContainer, Main } from "@/components/craft";
+import { Section, ContentContainer, Main } from "@/app/[locale]/components/craft";
 import { Metadata } from "next";
 
-import BackButton from "@/components/back";
+import BackButton from "@/app/[locale]/components/back";
 
 export async function generateMetadata({
   params,

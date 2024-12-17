@@ -1,7 +1,7 @@
 import { getAllAuthors } from "@/lib/wordpress";
-import { Section, ContentContainer } from "@/components/craft";
+import { Section, ContentContainer } from "@/app/[locale]/components/craft";
 import Link from "next/link";
-import BackButton from "@/components/back";
+import BackButton from "@/app/[locale]/components/back";
 import { Metadata } from "next";
 
 

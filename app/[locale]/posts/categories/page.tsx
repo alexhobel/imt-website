@@ -1,8 +1,8 @@
 import { getAllCategories } from "@/lib/wordpress";
-import { Section, ContentContainer } from "@/components/craft";
+import { Section, ContentContainer } from "@/app/[locale]/components/craft";
 import { Metadata } from "next";
 import Link from "next/link";
-import BackButton from "@/components/back";
+import BackButton from "@/app/[locale]/components/back";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

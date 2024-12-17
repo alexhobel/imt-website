@@ -109,15 +109,15 @@ const Footer = () => {
           </div>
           <div className="flex flex-col gap-2 text-sm">
             <h5 className="font-medium text-base">Website</h5>
-            {Object.entries(mainMenu).map(([key, href]) => (
-              <Link
-                className="hover:underline underline-offset-4"
-                key={href}
-                href={href}
-              >
-                {key.charAt(0).toUpperCase() + key.slice(1)}
-              </Link>
-            ))}
+            {Object.entries(mainMenu).map(([key, value]) => (
+            <Link
+              className="hover:underline underline-offset-4"
+              key={key} 
+              href={value.href} 
+            >
+              {key.charAt(0).toUpperCase() + key.slice(1)}
+            </Link>
+          ))}
           </div>
           <div className="flex flex-col gap-2 text-sm">
             <h5 className="font-medium text-base">Blog</h5>
