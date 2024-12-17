@@ -84,7 +84,7 @@ const HomePage = () => {
           </div>
 
           {/* Rechter Bereich */}
-          <div className="lg:w-[40%]">
+          <div className="lg:w-[40%] mt-16">
             <p className="text-muted-foreground text-lg">
               Von der präzisen Konstruktion bis zum digitalen Zwilling – IMT bietet
               Ihnen maßgeschneiderte Lösungen für die digitale Transformation Ihrer
@@ -110,19 +110,24 @@ const HomePage = () => {
             description="Die Virtuelle Inbetriebnahme testet Anlagen digital, um Fehler zu vermeiden und Effizienz zu steigern."
             icon={commissioningIcon}
             link="/virtual-commissioning"
+            variant="arrowIconTopRight"
           />
           <Card
             title="Zusätzliche Digitale Services"
             description="Erweiterte digitale Lösungen zur Prozessoptimierung und Kundennutzensteigerung."
             icon={servicesIcon}
             link="/digital-services"
+            variant="arrowIconTopRight"
           />
           <Card
             title="Digitaler Zwilling"
+            fontColotTitle = "white"
+            fontColorDescription = "white"
             description="Ein Digitaler Zwilling ist eine virtuelle Abbildung eines physischen Objekts."
             icon={digitalTwinIcon}
             link="/digital-twin"
-            backgroundColor="bg-primary text-white"
+            backgroundColor="bg-primary"
+            variant="arrowIconTopRight"
           />
         </div>
         
