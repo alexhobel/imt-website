@@ -18,7 +18,7 @@ type CardProps = {
 
 // Variants definieren
 const cardVariants = cva(
-  "relative rounded-lg p-6 flex flex-col justify-between transition-all overflow-hidden",
+  "relative rounded-lg !pt-0 pr-6 pb-6 pl-6 flex flex-col justify-between transition-all overflow-hidden",
   {
     variants: {
       variant: {
@@ -45,13 +45,13 @@ const Card = ({
   return (
     <div className={cn(cardVariants({ variant }), backgroundColor)}>
       {/* Icon */}
-      <div className="mb-4">
-        <Image src={icon} alt={`${title} Icon`} width={50} height={50} />
+      <div >
+        <Image src={icon} alt={`${title} Icon`} width={50} height={50} className="mt-5" />
       </div>
 
       {/* Title */}
       <h3
-        className="text-xl font-bold mb-2"
+        className="text-xl font-bold !mb-1 !mt-0"
         style={{ color: fontColotTitle }}
       >{title}</h3>
 
@@ -69,7 +69,7 @@ const Card = ({
           <div
             className="absolute top-0 right-0 w-20 h-20 bg-white border-0"
             style={{
-              clipPath: "circle(120% at 100% 20%)", // Perfekter runder Cut oben rechts
+              clipPath: "circle(120% at 100% 0%)", // Perfekter runder Cut oben rechts
             }}
           ></div>
 

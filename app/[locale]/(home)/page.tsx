@@ -69,7 +69,7 @@ const HomePage = () => {
       <section
         id="expertise-section"
         aria-labelledby="expertise-title"
-        className="bg-white py-16"
+        className="bg-white py-16 min-h-screen flex items-center relative"
       >
       <ContentContainer>
         <div className="flex flex-col lg:flex-row items-start justify-between">

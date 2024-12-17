@@ -77,7 +77,6 @@ export default async function RootLayout({
               <Header adressData={adressData} contactData={contactData} />
               <Main>{children}</Main>
           </NextIntlClientProvider>
-          <Footer />
         </ThemeProvider>
         <Analytics />
       </body>
